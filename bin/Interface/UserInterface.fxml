@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.TilePane?>
+
+
+<AnchorPane fx:id="rootPane" prefHeight="694.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.ControllerA">
+    <children>
+        <TextField fx:id="leftTextArea" editable="false" style="-fx-background-color: none; -fx-border-color: grey;" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="10.0" />
+        
+        <TextField fx:id="rightTextArea" alignment="CENTER" editable="false" style="-fx-background-color: none; -fx-border-color: grey;" AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="11.0" />
+        
+        <TextField fx:id="bottomTextField" alignment="BOTTOM_CENTER" editable="false" style="-fx-background-color: none; -fx-border-color: none;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="210.0" />
+        
+        <ScrollPane fx:id="topLeftScrollPane" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="344.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="71.0">
+            <content>
+                <GridPane fx:id="grdPane" alignment="CENTER" gridLinesVisible="true">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" percentHeight="50.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <ImageView fx:id="userImg" fitHeight="137.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" />
+                                <TextArea fx:id="descriptionArea" editable="false" HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="Tahoma" size="12.0" />
+                                    </font>
+                                </TextArea>
+                            </children>
+                        </HBox>
+                        
+                        <VBox alignment="CENTER" spacing="30" GridPane.columnIndex="0" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Similarity Score" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="5.0" top="0.0" />
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="similarityTextField" alignment="CENTER" editable="false" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Final Diagnosis">
+                                    <font>
+                                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                                    </font>
+                                    <padding>
+                                        <Insets bottom="5.0" top="0.0" />
+                                    </padding>
+                                </Label>
+                                <TextField fx:id="classificationTextField" alignment="CENTER" editable="false" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0" VBox.vgrow="ALWAYS">
+                            <children>
+	                            <ComboBox fx:id="imageSelector" promptText="Select Scan" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                <Button fx:id="btnProcess" text="Graph Analysis" VBox.vgrow="ALWAYS" onAction="#processScan" />
+                                <Button fx:id="btnClassifyScan" text="Classify Scan" VBox.vgrow="ALWAYS" onAction="#classifyScan" />
+                                <Button fx:id="btnExit" text="Exit" VBox.vgrow="ALWAYS" onAction="#handleCloseButtonAction" />
+                            </children>
+                        </VBox>
+                    </children>
+                </GridPane>
+            </content>
+        </ScrollPane>
+        
+        <ScrollPane fx:id="topRightScrollPane" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="344.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="71.0">
+            <content>
+				<VBox spacing="2" alignment="CENTER">
+				    <HBox>
+                        <Label text="Normal (Healthy) Samples" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="5.0" top="0.0" />
+                            </padding>
+                        </Label>
+				    </HBox>
+				    <HBox>
+				        <TilePane fx:id="healthyImgTilePane" prefColumns="10" layoutX="10.0" layoutY="10.0" hgap="0" vgap="10" />
+				    </HBox>
+				    <HBox>
+                        <Label text="Bacterial Pneumonia Samples" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="5.0" top="0.0" />
+                            </padding>
+                        </Label>
+				    </HBox>
+				    <HBox>
+				        <TilePane fx:id="bacterialImgTilePane" prefColumns="10" layoutX="10.0" layoutY="10.0" hgap="0" vgap="10" />
+				    </HBox>
+				    <HBox>
+                        <Label text="Viral Pneumonia Samples" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="5.0" top="0.0" />
+                            </padding>
+                        </Label>
+				    </HBox>
+				    <HBox>
+				        <TilePane fx:id="viralImgTilePane" prefColumns="10" layoutX="10.0" layoutY="10.0" hgap="0" vgap="10" />
+				    </HBox>
+				</VBox>
+            </content>
+        </ScrollPane>
+
+		<ScrollPane fx:id="leftScrollPane" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="402.0">
+		    <content>
+			    <VBox spacing="2" alignment="CENTER">
+				    <HBox spacing="2" alignment="CENTER">
+                        <Label text="Patient's Scan" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="5.0" top="15.0" />
+                            </padding>
+                        </Label>
+				    </HBox>
+	               	<HBox spacing="5" alignment="CENTER" styleClass="hbox-padding">
+	                    <ImageView fx:id="chosenImgDisplay" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+	                    <ImageView fx:id="edgeEnhancedImgDisplay" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+	                </HBox>
+	            </VBox>
+		    </content>
+		</ScrollPane>
+        
+        <ScrollPane fx:id="rightScrollPane" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="0.8" AnchorPane.topAnchor="402.0">
+            <content>
+				<VBox spacing="2" alignment="CENTER">
+				    <HBox spacing="2" alignment="CENTER">
+                        <Label text="Matching Scan" textAlignment="CENTER">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="5.0" top="15.0" />
+                            </padding>
+                        </Label>
+				    </HBox>
+				   	<HBox spacing="5" alignment="CENTER" styleClass="hbox-padding">
+				        <ImageView fx:id="MOImgDisplay" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+				        <ImageView fx:id="MEEImgDisplay" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+				    </HBox>
+				</VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

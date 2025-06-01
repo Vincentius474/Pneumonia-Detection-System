@@ -1,0 +1,11 @@
+1. Download the dataset from the given link below:
+
+https://drive.google.com/file/d/1g-YivT6cdDuNW1eRYIx8Mkrn_a4EYTGk/view?usp=sharing
+
+Instructions:
+- Unzip the dataset, copy the "data" directory (it contains to sub directories) and paste it inside the "src" directory in the project
+
+
+2. Add the following VM Arguments
+
+--module-path "C:\javafx-sdk-22.0.1\lib" --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing
